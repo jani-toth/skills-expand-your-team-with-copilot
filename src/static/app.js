@@ -472,6 +472,27 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
+  // Function to build social share URLs for an activity
+  function buildShareButtons(name, description) {
+    const pageUrl = window.location.href.split("#")[0];
+    const shareText = `Check out "${name}" at Mergington High School! ${description}`;
+    const twitterUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(shareText)}&url=${encodeURIComponent(pageUrl)}`;
+    const facebookUrl = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(pageUrl)}&quote=${encodeURIComponent(shareText)}`;
+    const whatsappUrl = `https://wa.me/?text=${encodeURIComponent(shareText + " " + pageUrl)}`;
+
+    return `
+      <div class="share-buttons">
+        <span class="share-label">Share:</span>
+        <a href="${twitterUrl}" target="_blank" rel="noopener noreferrer"
+           class="share-btn share-btn-twitter" aria-label="Share on X (Twitter)" title="Share on X (Twitter)">X</a>
+        <a href="${facebookUrl}" target="_blank" rel="noopener noreferrer"
+           class="share-btn share-btn-facebook" aria-label="Share on Facebook" title="Share on Facebook">FB</a>
+        <a href="${whatsappUrl}" target="_blank" rel="noopener noreferrer"
+           class="share-btn share-btn-whatsapp" aria-label="Share on WhatsApp" title="Share on WhatsApp">WA</a>
+      </div>
+    `;
+  }
+
   // Function to render a single activity card
   function renderActivityCard(name, details) {
     const activityCard = document.createElement("div");
@@ -569,6 +590,7 @@ document.addEventListener("DOMContentLoaded", () => {
         `
         }
       </div>
+      ${buildShareButtons(name, details.description)}
     `;
 
     // Add click handlers for delete buttons
