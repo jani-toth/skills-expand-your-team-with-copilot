@@ -10,6 +10,11 @@
     <header>
       <h1>Mergington High School</h1>
       <h2>Extracurricular Activities</h2>
+      <!-- School mascots (Octocats) -->
+      <div class="header-mascots" aria-hidden="true">
+        <img src="https://octodex.github.com/images/Professortocat_v2.png" alt="Professor Octocat mascot" title="Go Octocats!" />
+        <img src="https://octodex.github.com/images/original.png" alt="Original Octocat mascot" title="Mergington High School" />
+      </div>
       <div id="user-controls">
         <button id="dark-mode-toggle" aria-label="Switch to dark mode" title="Switch to dark mode">
           🌙
@@ -121,13 +126,32 @@
                 </button>
               </div>
             </div>
+
+            <!-- Group By -->
+            <div class="filter-container">
+              <div class="filter-label">Group by:</div>
+              <div class="group-filters" id="group-filters">
+                <button class="group-filter active" data-group="">None</button>
+                <button class="group-filter" data-group="category">Category</button>
+                <button class="group-filter" data-group="day">Day</button>
+              </div>
+            </div>
           </aside>
 
           <!-- Activities Content -->
           <div class="activities-content">
+            <!-- View Toggle -->
+            <div class="view-toggle">
+              <span class="view-toggle-label">View:</span>
+              <button class="view-btn active" id="view-cards-btn">🗂 Cards</button>
+              <button class="view-btn" id="view-calendar-btn">📅 Calendar</button>
+            </div>
             <div id="activities-list">
               <!-- Activities will be loaded here -->
               <p>Loading activities...</p>
+            </div>
+            <div id="calendar-view" class="hidden">
+              <!-- Calendar will be rendered here -->
             </div>
             <div id="message" class="hidden message"></div>
           </div>
@@ -136,7 +160,7 @@
     </main>
 
     <footer>
-      <p>&copy; 2023 Mergington High School</p>
+      <p>&copy; 2023 Mergington High School &nbsp;🐙&nbsp; Go Octocats!</p>
     </footer>
 
     <!-- Registration Modal -->

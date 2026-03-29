@@ -1,0 +1,84 @@
+name: "Add New Activity"
+description: "Request to add a new extracurricular activity"
+labels: ["enhancement"]
+body:
+  - type: input
+    id: activity-name
+    attributes:
+      label: Activity Name
+      placeholder: "e.g. Chess Club"
+    validations:
+      required: true
+
+  - type: textarea
+    id: description
+    attributes:
+      label: Description
+      placeholder: "Describe what students will do in this activity"
+    validations:
+      required: true
+
+  - type: checkboxes
+    id: schedule-days
+    attributes:
+      label: Schedule Days
+      options:
+        - label: Monday
+        - label: Tuesday
+        - label: Wednesday
+        - label: Thursday
+        - label: Friday
+        - label: Saturday
+        - label: Sunday
+    validations:
+      required: true
+
+  - type: input
+    id: start-time
+    attributes:
+      label: Start Time
+      placeholder: "e.g. 3:30 PM"
+    validations:
+      required: true
+
+  - type: input
+    id: end-time
+    attributes:
+      label: End Time
+      placeholder: "e.g. 5:00 PM"
+    validations:
+      required: true
+
+  - type: dropdown
+    id: difficulty
+    attributes:
+      label: Difficulty Level
+      description: Leave blank if the activity is open to all levels
+      options:
+        - None (all levels)
+        - Beginner
+        - Intermediate
+        - Advanced
+    validations:
+      required: false
+
+  - type: input
+    id: max-participants
+    attributes:
+      label: Max Participants
+      placeholder: "e.g. 20"
+    validations:
+      required: true
+
+  - type: dropdown
+    id: category
+    attributes:
+      label: Category
+      options:
+        - Sports
+        - Arts
+        - Academic
+        - Community
+        - Technology
+    validations:
+      required: true
