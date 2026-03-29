@@ -44,6 +44,34 @@ document.addEventListener("DOMContentLoaded", () => {
   // Authentication state
   let currentUser = null;
 
+  // Dark mode toggle
+  const darkModeToggle = document.getElementById("dark-mode-toggle");
+
+  function applyDarkMode(isDark) {
+    if (isDark) {
+      document.documentElement.setAttribute("data-theme", "dark");
+      darkModeToggle.textContent = "☀️";
+      darkModeToggle.title = "Switch to light mode";
+      darkModeToggle.setAttribute("aria-label", "Switch to light mode");
+    } else {
+      document.documentElement.removeAttribute("data-theme");
+      darkModeToggle.textContent = "🌙";
+      darkModeToggle.title = "Switch to dark mode";
+      darkModeToggle.setAttribute("aria-label", "Switch to dark mode");
+    }
+  }
+
+  // Load saved preference or use system preference
+  const savedTheme = localStorage.getItem("theme");
+  const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+  applyDarkMode(savedTheme === "dark" || (!savedTheme && prefersDark));
+
+  darkModeToggle.addEventListener("click", () => {
+    const isDark = document.documentElement.getAttribute("data-theme") === "dark";
+    applyDarkMode(!isDark);
+    localStorage.setItem("theme", !isDark ? "dark" : "light");
+  });
+
   // Time range mappings for the dropdown
   const timeRanges = {
     morning: { start: "06:00", end: "08:00" }, // Before school hours
