@@ -1,0 +1,38 @@
+name: "Modify Activity"
+description: "Request to change details of an existing activity"
+labels: ["enhancement"]
+body:
+  - type: input
+    id: activity-name
+    attributes:
+      label: Activity Name
+      placeholder: "e.g. Chess Club"
+    validations:
+      required: true
+
+  - type: checkboxes
+    id: what-to-change
+    attributes:
+      label: What to Change
+      options:
+        - label: Description
+        - label: Schedule
+        - label: Max Participants
+        - label: Difficulty
+        - label: Other
+
+  - type: textarea
+    id: new-values
+    attributes:
+      label: New Values
+      placeholder: "Describe the new values for each field you selected above"
+    validations:
+      required: true
+
+  - type: textarea
+    id: reason
+    attributes:
+      label: Reason for Change
+      placeholder: "Why is this change needed? (optional)"
+    validations:
+      required: false
